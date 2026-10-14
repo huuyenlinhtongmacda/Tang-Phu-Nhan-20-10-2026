@@ -1,0 +1,275 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(
+    135deg,
+    #fff0f5,
+    #ffd6e7,
+    #ffb6c9
+    );
+    color: #c2185b;
+}
+/* MAN HÌNH NHẬP MẬT MÃ */
+#man_hinh_nhap_mat_ma{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.khu_vuc_nhap_mat_ma{
+    width: 100%;
+    max-width: 360px;
+    padding: 30px 24px;
+    text-align: center;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 10px 40px rgba(194, 24, 91, 0.18);
+    backdrop-filter: blur(12px);
+    animation: appear 0.8s ease;
+}
+.khu_vuc_nhap_mat_ma h1{
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #d81b60;
+}
+.khu_vuc_nhap_mat_ma p{
+    font-size: 14px;
+    margin-bottom: 30px;
+    color: #ad456b;
+}
+
+#vung_hien_thi_mat_ma{
+    width: 100%;
+    height: 50px;
+    border: 2px solid #ffc1d6;
+    border-radius: 15px;
+    background: #fff7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    letter-spacing: 5px;
+    color: #d81b60;
+}
+.ban_phim{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+.nut_ban_phim{
+    height: 60px;
+    border: none;
+    border-radius: 15px;
+    background: white;
+    color: #d81b60;
+    font-size: 23px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(216, 27, 96, 0.12);
+    transition: 0.2s;
+}
+.nut_ban_phim:hover{
+    background: #ffb3cc;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.nut_ban_phim:active {
+    transform: scale(0.92);
+}
+
+.nut_ban_phim.nut_khac {
+    font-size: 16px;
+    background: #ffe1eb;
+}
+#goi_y{
+    min-height: 25px;
+    margin-top: 17px;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: #e91e63;
+}
+
+/* MAN HINH TRAI TIM */
+
+#man_hinh_trai_tim{
+    position: fixed;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden;
+}
+#man_hinh_trai_tim.hien_thi{
+    display: flex;
+    animation: appear 1s ease;
+}
+.thong_bao{
+    font-size: 18px;
+    color: #bd4770;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    margin-top: 50px;
+}
+.hinh_trai_tim{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+.trai_tim{
+    border: none;
+    background: transparent;
+    font-size: 150px;
+    line-height: 1;
+    cursor: pointer;
+    filter: drop-shadow(0 8px 15px rgba(220, 20, 60, 0.3));
+    animation: trai_tim_dap 1.2s infinite;
+    transition: transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+}
+.trai_tim:hover {
+    transform: scale(1.12);
+}
+
+.trai_tim:active {
+    transform: scale(0.9);
+}
+.Ten_Phu_Nhân,.Ten_Ta{
+    font-size: 25px;
+    margin: 20px;
+    
+    opacity: 0;
+    font-family: 'Dancing Script', cursive;
+    font-weight: bold;
+}
+.Ten_Phu_Nhân.hien_thi,
+.Ten_Ta.hien_thi {
+    opacity: 1;
+}
+#loi_chuc{
+    max-width: 700px;
+    margin-top: 30px;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.5;
+    color: #d4145a;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s ease;
+    z-index: 2;
+}
+#loi_chuc.hien_thi {
+    opacity: 1;
+    transform: translateY(0);
+}
+#thong_bao_2{
+    margin-top: 15px;
+    font-size: 16px;
+    color: #bd4770;
+    z-index: 2;
+}
+
+/* HOA VÀ TRÁI TIM RƠI */
+
+.hoa_roi {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    z-index: 5;
+    animation: falling linear forwards;
+    will-change: transform;
+}
+
+@keyframes trai_tim_dap {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.1);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes falling {
+    0% {
+        transform: translate3d(0, -5vh, 0) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(var(--do_lech), 115vh, 0)
+            rotate(var(--do_xoay));
+        opacity: 0.2;
+    }
+}
+
+
+@keyframes appear {
+    from {
+opacity: 0;
+transform: translateY(15px);
+    }
+
+    to {
+opacity: 1;
+transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .khu_vuc_nhap_mat_ma {
+        padding: 25px 20px;
+    }
+
+    .nut_ban_phim {
+        height: 58px;
+    }
+
+    .hinh_trai_tim {
+        width: 170px;
+        height: 170px;
+    }
+
+    .trai_tim {
+        font-size: 125px;
+    }
+
+    .thong_bao {
+        font-size: 15px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trai_tim {
+        animation-duration: 3s;
+    }
+}
