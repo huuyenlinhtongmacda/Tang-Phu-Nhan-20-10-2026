@@ -212,7 +212,7 @@ body{
     --ban_kinh: 140px;
 
     position: absolute;
-    top: 43%;
+    top: 40%;
     left: 50%;
 
     width: 0;
@@ -260,7 +260,7 @@ body{
 
 #anh_qua {
     display: none;
-    width: 195px;
+    width: 190px;
     max-width: 80vw;
     max-height: 60vh;
     object-fit: contain;
