@@ -209,7 +209,7 @@ body{
 }
 
 .vong_icon {
-    --ban_kinh: 180px;
+    --ban_kinh: 140px;
 
     position: absolute;
     top: 47%;
@@ -260,7 +260,7 @@ body{
 
 #anh_qua {
     display: none;
-    width: 250px;
+    width: 200px;
     max-width: 80vw;
     max-height: 60vh;
     object-fit: contain;
@@ -363,7 +363,7 @@ transform: translateY(0);
     }
 
     .trai_tim {
-        font-size: 125px;
+        font-size: 100px;
     }
 
     .thong_bao {
