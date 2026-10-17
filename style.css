@@ -260,7 +260,7 @@ body{
 
 #anh_qua {
     display: none;
-    width: 190px;
+    width: 180px;
     max-width: 80vw;
     max-height: 60vh;
     object-fit: contain;
@@ -386,7 +386,7 @@ transform: translateY(0);
     pointer-events: none;
 
     
-    color: #eb004e;
+    color: rgb(255, 213, 0);
     font-size: 16px;
     font-weight: bold;
     white-space: nowrap;

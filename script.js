@@ -160,17 +160,13 @@ trai_tim.addEventListener("click", () => {
         document.getElementById("bieu_tuong_trai_tim").textContent = "💖";
 
         // Bắt đầu mưa hoa
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 25; i++) {
             setTimeout(hoa_roi, i * 100);
         }
 
         hen_gio = setInterval(() => {
             hoa_roi();
-
-            if(Math.random() > 0.5) {
-                hoa_roi();
-            }
-        }, 400);
+        }, 500);
     }
     if (bat_dau_mua_hoa == true && so_luong >= 10 ){
         trai_tim.classList.add("hien_anh");
@@ -180,17 +176,19 @@ trai_tim.addEventListener("click", () => {
 });
 
 const danh_sach_loi_chuc = [
-    "Phu Nhân à ❤️",
-    "Vui vẻ 🌹",
-    "Bình an 💗",
-    "Tốt đẹp 🌸",
-    "Hạnh Phúc 💖",
-    "Như ý 💕",
-    "Tuyệt vời 🌷",
-    "Thuận lợi 🥰",
-    "Yên ổn ❤️",
-    "An lành 🌹"
+    "Phu Nhân à 🫶",
+    "Vui vẻ 🍀",
+    "Bình an 🕊️",
+    "Tốt đẹp 🌻",
+    "Hạnh Phúc 💝",
+    "Như ý ✨",
+    "Tuyệt vời 🦋",
+    "Thuận lợi 🌈",
+    "Yên ổn 🌙",
+    "An lành ☀️"
 ];
+
+
 
 document.querySelectorAll(".icon_bay").forEach((icon) => {
     icon.addEventListener("click", function () {
