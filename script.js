@@ -3,6 +3,7 @@ const Mat_ma_chinh_xac = "2010";
 let mat_ma = "";
 let bat_dau_mua_hoa = false;
 let hen_gio = null;
+let so_luong = 0;
 
 const man_hinh_nhap_mat_ma = document.getElementById("man_hinh_nhap_mat_ma");
 const man_hinh_trai_tim = document.getElementById("man_hinh_trai_tim");
@@ -11,6 +12,7 @@ const noi_dung_mat_ma = document.getElementById("noi_dung_mat_ma");
 const goi_y = document.getElementById("goi_y");
 
 const trai_tim = document.getElementById("trai_tim");
+const thong_bao = document.getElementById("thong_bao")
 const thong_bao_2 = document.getElementById("thong_bao_2");
 const loi_chuc = document.getElementById("loi_chuc");
 
@@ -67,6 +69,7 @@ function check_mat_ma() {
         setTimeout(() => {
             man_hinh_nhap_mat_ma.style.display = "none";
             man_hinh_trai_tim.classList.add("hien_thi");
+            
         },1000);
     }
     else {
@@ -146,15 +149,18 @@ trai_tim.addEventListener("click", () => {
 
         loi_chuc.classList.add("hien_thi");
 
+        document.getElementById("vong_icon").classList.add("hien");
+
         document.querySelector(".Ten_Phu_Nhân").classList.add("hien_thi");
         document.querySelector(".Ten_Ta").classList.add("hien_thi");
 
-        thong_bao_2.textContent = "bình bình, an an, vui vui, vẻ vẻ, không cần quá nổi bật, chỉ cần sống tốt cho bản thân.";
-        trai_tim.textContent ="💖";
-    
+        
+        thong_bao_2.textContent = "bấm vô icon 🥰";
+        
+        document.getElementById("bieu_tuong_trai_tim").textContent = "💖";
 
         // Bắt đầu mưa hoa
-        for (let i = 0; i < 25; i++) {
+        for (let i = 0; i < 15; i++) {
             setTimeout(hoa_roi, i * 100);
         }
 
@@ -164,12 +170,102 @@ trai_tim.addEventListener("click", () => {
             if(Math.random() > 0.5) {
                 hoa_roi();
             }
-        }, 180);
+        }, 400);
     }
-    else {
-        for (let i = 0; i < 25; i++) {
-            setTimeout(hoa_roi, i * 70);
-        }
+    if (bat_dau_mua_hoa == true && so_luong >= 10 ){
+        trai_tim.classList.add("hien_anh");
+        thong_bao.classList.add("thong_bao_3")
+        thong_bao.textContent = "Món quà cuối cùng là Ta nè, đến vác về đi 🌟"
     }
 });
+
+const danh_sach_loi_chuc = [
+    "Phu Nhân à ❤️",
+    "Vui vẻ 🌹",
+    "Bình an 💗",
+    "Tốt đẹp 🌸",
+    "Hạnh Phúc 💖",
+    "Như ý 💕",
+    "Tuyệt vời 🌷",
+    "Thuận lợi 🥰",
+    "Yên ổn ❤️",
+    "An lành 🌹"
+];
+
+document.querySelectorAll(".icon_bay").forEach((icon) => {
+    icon.addEventListener("click", function () {
+        if (this.classList.contains("da_nhan")) {
+            return;
+        }
+        
+        so_luong += 1;
+
+        this.classList.add("da_nhan");
+
+        if (so_luong >= 10) {
+            thong_bao_2.textContent = "Bấm vô trái tim để nhận phần quà cuối cùng nhé Phu Nhân 💗";
+        }
+
+        const chu = document.createElement("div");
+        chu.className = "chu_bay";
+
+        chu.textContent =
+            danh_sach_loi_chuc[
+                Math.floor(Math.random() * danh_sach_loi_chuc.length)
+            ];
+
+        document.body.appendChild(chu);
+
+        let x = Math.random() * Math.max(
+            0,
+            window.innerWidth - chu.offsetWidth
+        );
+
+        let y = Math.random() * Math.max(
+            0,
+            window.innerHeight - chu.offsetHeight
+        );
+
+        let vx = Math.random() * 2 - 1;
+        let vy = Math.random() * 2 - 1;
+
+        const toc_do = 0.4;
+
+        chu.style.left = `${x}px`;
+        chu.style.top = `${y}px`;
+
+        function bay_lien_tuc() {
+            const gioi_han_x = Math.max(
+                0,
+                window.innerWidth - chu.offsetWidth
+            );
+
+            const gioi_han_y = Math.max(
+                0,
+                window.innerHeight - chu.offsetHeight
+            );
+
+            x += vx * toc_do;
+            y += vy * toc_do;
+
+            if (x <= 0 || x >= gioi_han_x) {
+                vx *= -1;
+                x = Math.max(0, Math.min(x, gioi_han_x));
+            }
+
+            if (y <= 0 || y >= gioi_han_y) {
+                vy *= -1;
+                y = Math.max(0, Math.min(y, gioi_han_y));
+            }
+
+            chu.style.left = `${x}px`;
+            chu.style.top = `${y}px`;
+
+            requestAnimationFrame(bay_lien_tuc);
+        }
+
+        bay_lien_tuc();
+    });
+});
+
 

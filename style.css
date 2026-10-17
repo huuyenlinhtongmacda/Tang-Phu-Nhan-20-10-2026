@@ -116,12 +116,22 @@ body{
     display: flex;
     animation: appear 1s ease;
 }
-.thong_bao{
-    font-size: 18px;
+#thong_bao{
+    font-size: 20px;
+    color: #bd4770;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    margin-bottom: 100px;
+    
+}
+
+.thong_bao_3{
+    font-size: 50px;
     color: #bd4770;
     margin-bottom: 30px;
     letter-spacing: 2px;
     margin-top: 50px;
+    font-weight: bold;
 }
 .hinh_trai_tim{
     position: relative;
@@ -164,8 +174,8 @@ body{
 }
 #loi_chuc{
     max-width: 700px;
-    margin-top: 30px;
-    font-size: clamp(22px, 4vw, 36px);
+    margin-top: 70px;
+    font-size: clamp(30px, 4vw, 36px);
     font-weight: 800;
     line-height: 1.5;
     color: #d4145a;
@@ -174,13 +184,14 @@ body{
     transform: translateY(30px);
     transition: 1s ease;
     z-index: 2;
+
 }
 #loi_chuc.hien_thi {
     opacity: 1;
     transform: translateY(0);
 }
 #thong_bao_2{
-    margin-top: 15px;
+    margin-top: 55px;
     font-size: 16px;
     color: #bd4770;
     z-index: 2;
@@ -196,6 +207,98 @@ body{
     animation: falling linear forwards;
     will-change: transform;
 }
+
+.vong_icon {
+    --ban_kinh: 180px;
+
+    position: absolute;
+    top: 47%;
+    left: 50%;
+
+    width: 0;
+    height: 0;
+
+    display: none;
+    z-index: 5;
+}
+
+.vong_icon.hien {
+    display: block;
+    animation: xoay_vong 15s linear infinite;
+}
+
+.icon_bay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    font-size: 40px;
+    line-height: 1;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(var(--goc))
+        translateY(calc(-1 * var(--ban_kinh)));
+}
+
+.icon_bay:nth-child(1)  { --goc: 0deg; }
+.icon_bay:nth-child(2)  { --goc: 36deg; }
+.icon_bay:nth-child(3)  { --goc: 72deg; }
+.icon_bay:nth-child(4)  { --goc: 108deg; }
+.icon_bay:nth-child(5)  { --goc: 144deg; }
+.icon_bay:nth-child(6)  { --goc: 180deg; }
+.icon_bay:nth-child(7)  { --goc: 216deg; }
+.icon_bay:nth-child(8)  { --goc: 252deg; }
+.icon_bay:nth-child(9)  { --goc: 288deg; }
+.icon_bay:nth-child(10) { --goc: 324deg; }
+
+
+#trai_tim {
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#anh_qua {
+    display: none;
+    width: 250px;
+    max-width: 80vw;
+    max-height: 60vh;
+    object-fit: contain;
+    border-radius: 15px;
+    animation: anh_xuat_hien 0.8s ease;
+}
+
+#trai_tim.hien_anh {
+    font-size: 0;
+}
+
+#trai_tim.hien_anh #anh_qua {
+    display: block;
+}
+
+@keyframes anh_xuat_hien {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes xoay_vong {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 
 @keyframes trai_tim_dap {
     0%, 100% {
@@ -272,4 +375,56 @@ transform: translateY(0);
     .trai_tim {
         animation-duration: 3s;
     }
+}
+
+
+
+
+.chu_bay {
+    position: fixed;
+    z-index: 9999;
+    pointer-events: none;
+
+    
+    color: #eb004e;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); 
+    will-change: left, top;
+}
+
+@keyframes chu_bay_linh_tinh {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.7);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(var(--bay_x), var(--bay_y)) rotate(10deg);
+    }
+
+    75% {
+        transform: translate(var(--bay_x_2), var(--bay_y_2)) rotate(-10deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(var(--bay_x_3), var(--bay_y_3)) rotate(0deg);
+    }
+}
+
+.icon_bay {
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.icon_bay.da_nhan {
+    opacity: 0;
+    pointer-events: none;
 }
